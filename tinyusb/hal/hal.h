@@ -94,6 +94,8 @@ static inline void hal_interrupt_disable(uint8_t coreid) ATTR_ALWAYS_INLINE;
   #include "hal_lpc43xx.h"
 #elif TUSB_CFG_MCU == MCU_LPC175X_6X
   #include "hal_lpc175x_6x.h"
+#elif TUSB_CFG_MCU == MCU_KL25X
+  #include "hal_kl25x.h"
 #else
   #error MCU is not defined or supported yet
 #endif
@@ -107,7 +109,7 @@ static inline bool hal_debugger_is_attached(void) ATTR_PURE ATTR_ALWAYS_INLINE;
 static inline bool hal_debugger_is_attached(void)
 {
 // TODO check core M3/M4 defined instead
-#if !defined(_TEST_) && !(TUSB_CFG_MCU==MCU_LPC11UXX)
+#if !defined(_TEST_) && !((TUSB_CFG_MCU==MCU_LPC11UXX)||(TUSB_CFG_MCU==MCU_KL25X))
   return ( (CoreDebug->DHCSR & CoreDebug_DHCSR_C_DEBUGEN_Msk) == CoreDebug_DHCSR_C_DEBUGEN_Msk );
 #elif TUSB_CFG_DEBUG == 3
   return true; // force to break into breakpoint with debug = 3

@@ -74,7 +74,7 @@
 //--------------------------------------------------------------------+
 // USB RAM PLACEMENT
 //--------------------------------------------------------------------+
-#ifdef __CODE_RED // compiled with lpcxpresso
+#if defined( __CODE_RED) || defined(__GNUC__) // compiled with lpcxpresso
 
   #if (TUSB_CFG_MCU == MCU_LPC11UXX) || (TUSB_CFG_MCU == MCU_LPC13UXX)
     #define TUSB_CFG_ATTR_USBRAM  ATTR_SECTION(.data.$RAM2) ATTR_ALIGNED(64) // lp11u & lp13u requires data to be 64 byte aligned
@@ -82,6 +82,8 @@
     #define TUSB_CFG_ATTR_USBRAM // LPC17xx USB DMA can access all
   #elif  (TUSB_CFG_MCU == MCU_LPC43XX)
     #define TUSB_CFG_ATTR_USBRAM  ATTR_SECTION(.data.$RAM3)
+  #elif (TUSB_CFG_MCU == MCU_KL25X)
+    #define TUSB_CFG_ATTR_USBRAM  ATTR_SECTION(.data)
   #endif
 
 #elif defined  __CC_ARM // Compiled with Keil armcc, USBRAM_SECTION is defined in scatter files
