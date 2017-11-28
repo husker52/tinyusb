@@ -55,6 +55,7 @@
 #define MCU_LPC177X_8X     5 ///< NXP LPC177x, LPC178x family (not supported yet)
 #define MCU_LPC18XX        6 ///< NXP LPC18xx family (not supported yet)
 #define MCU_LPC43XX        7 ///< NXP LPC43xx family
+#define MCU_KL25X	   8 ///< Kinetis KL2xx family
 /** @} */
 
 #include "mcu_capacity.h"

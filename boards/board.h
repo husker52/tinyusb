@@ -58,6 +58,7 @@
 //--------------------------------------------------------------------+
 /** \defgroup group_supported_board Supported Boards
  *  @{ */
+#define BOARD_FRDM_KL25Z	    2500 ///< FRDM-KL25Z board
 #define BOARD_LPCXPRESSO11U14       1114 ///< LPCXpresso 11u14, some APIs requires the base board
 #define BOARD_LPCXPRESSO11U68       1168 ///< LPC11U37 from microbuilder http://www.microbuilder.eu/Blog/13-03-14/LPC1xxx_1GHZ_Wireless_Board_Preview.aspx
 #define BOARD_LPCXPRESSO1347        1347 ///< LPCXpresso 1347, some APIs requires the base board
@@ -110,6 +111,8 @@
   #include "microbuilder/board_lpc4357usb.h"
 #elif BOARD == BOARD_LPCLINK2
  #include "lpcxpresso/board_lpclink2.h"
+#elif BOARD == BOARD_FRDM_KL25Z
+
 #else
   #error BOARD is not defined or supported yet
 #endif
